@@ -29,7 +29,7 @@ phpMyAdmin: http://localhost:8080/
 ### バックエンド
 
 - Laravel 12
-- Laravel Sanctum（Cookieベース認証）
+- Laravel Sanctum
 - Laravel Sail（Docker）
 - MySQL
 
@@ -108,7 +108,7 @@ APP_URL=http://localhost
 
 - Laravel のアプリケーションキーを生成
   `sail artisan key:generate　`
- 
+
   ※ このコマンドは Laravel を正しく動かすために必要です
 
 ### 3. フロントエンド（Next.js）のセットアップ
