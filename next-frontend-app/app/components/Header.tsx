@@ -36,9 +36,20 @@ export default function Header() {
         </Link>
         
         <div className="flex items-center gap-6">
-          <Link href="/products" className="text-gray-600 hover:text-gray-800 text-xl px-6 py-6">
+          <Link
+            href="/products"
+            className="text-gray-600 hover:text-gray-800 text-xl"
+          >
             商品一覧
           </Link>
+          {!session && status !== "loading" && (
+            <Link
+              href="/register"
+              className="px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-green-700 transition duration-200"
+            >
+              ユーザー登録
+            </Link>
+          )}
           {/* ① 認証状態を確認中 */}
           {status === "loading" ? (
             <p>Loading...</p>
