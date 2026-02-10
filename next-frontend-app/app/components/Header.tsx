@@ -35,7 +35,7 @@ export default function Header() {
           ECサイト
         </Link>
         
-        <div>
+        <div className="flex items-center gap-6">
           <Link href="/products" className="text-gray-600 hover:text-gray-800 text-xl px-6 py-6">
             商品一覧
           </Link>
