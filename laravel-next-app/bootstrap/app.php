@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
   ->withMiddleware(function (Middleware $middleware): void {
     // API requests should return 401 instead of redirecting to a missing login route
     $middleware->redirectTo(guests: null);
+    $middleware->alias([
+      'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+    ]);
   })
   ->withExceptions(function (Exceptions $exceptions): void {
     //

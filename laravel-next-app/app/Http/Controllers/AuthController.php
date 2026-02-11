@@ -24,6 +24,11 @@ class AuthController extends Controller
         'email' => ['認証情報が正しくありません。'],
       ]);
     }
+    if (! $user->hasVerifiedEmail()) {
+      throw ValidationException::withMessages([
+        'email' => ['メールアドレスの確認が完了していません。'],
+      ]);
+    }
     // パスワードが合っていたら「合言葉（トークン）」を発行する
     $token = $user->createToken('auth-token')->plainTextToken;
     // ユーザー情報とトークンをセットで返す
@@ -54,12 +59,10 @@ class AuthController extends Controller
       'email' => $request->email,
       'password' => Hash::make($request->password), // パスワードは暗号化して保存！
     ]);
-    // ⑨ 登録と同時に「合言葉（トークン）」を発行
-    $token = $user->createToken('auth-token')->plainTextToken;
+    $user->sendEmailVerificationNotification();
 
     return response()->json([
-      'user' => $user,
-      'token' => $token,
-    ]);
+      'message' => '確認メールを送信しました。メールを確認してください。',
+    ], 201);
   }
 }

@@ -11,11 +11,13 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     if (password !== passwordConfirmation) {
       setError("パスワードが一致しません。");
@@ -24,8 +26,7 @@ export default function RegisterPage() {
 
     try {
       setLoading(true);
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-      const res = await fetch(`${baseUrl}/api/register`, {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,8 +46,8 @@ export default function RegisterPage() {
         setError(message);
         return;
       }
-
-      router.push("/login");
+      const data = await res.json().catch(() => null);
+      setSuccess(data?.message || "確認メールを送信しました。メールを確認してください。");
     } catch (err) {
       console.error(err);
       setError("登録に失敗しました。");
@@ -130,6 +131,7 @@ export default function RegisterPage() {
           </div>
 
           {error && <p className="text-sm text-red-600">{error}</p>}
+          {success && <p className="text-sm text-green-600">{success}</p>}
 
           <button
             type="submit"

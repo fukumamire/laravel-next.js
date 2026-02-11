@@ -5,9 +5,14 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 ## 機能
 
 - 新規登録
+<img width="2854" height="1434" alt="Image" src="https://github.com/user-attachments/assets/d4c7078b-eb99-4b50-bb17-be37e87af491" />
+
 - ログイン機能
 - ログアウト機能
 - 新規登録時のメール認証（※テスト用のメールサーバは、Mailtrapを使用しています）
+📩メール認証画面
+
+
 - 商品データを一覧で表示できる
 - ログインしているかどうかで、表示されるボタンやメッセージが変わる
 
@@ -37,8 +42,8 @@ phpMyAdmin: http://localhost:8080/
 
 ### フロントエンド
 
-- Next.js 16.1.4（App Router）
-- NextAuth.js（Credentials Provider）
+- Next.js 16.1.4
+- NextAuth.js
 - TypeScript
 - Tailwind CSS
 
