@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   // メールアドレスの状態
@@ -16,6 +17,8 @@ export default function LoginPage() {
 
   // 画面遷移用（App Router版）
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const verified = searchParams.get("verified") === "1";
 
   // フォーム送信時の処理
   const handleSubmit = async (e: React.FormEvent) => {
@@ -83,6 +86,9 @@ export default function LoginPage() {
 
             {/* エラー表示 */}
           {error && <p className="text-sm text-red-600">{error}</p>}
+          {verified && (
+            <p className="text-sm text-green-600">メール認証が完了しました。ログインできます。</p>
+          )}
 
            {/* 送信ボタン */}
           <div>
@@ -92,6 +98,11 @@ export default function LoginPage() {
             >
               ログイン
             </button>
+          </div>
+          <div className="text-right">
+            <Link href="/forgot-password" className="text-sm text-indigo-600 hover:underline">
+              パスワードをお忘れですか？
+            </Link>
           </div>
         </form>
       </div>

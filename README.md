@@ -5,12 +5,15 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 ## 機能
 
 - 新規登録
-<img width="2854" height="1434" alt="Image" src="https://github.com/user-attachments/assets/d4c7078b-eb99-4b50-bb17-be37e87af491" />
+  <img width="2854" height="1434" alt="Image" src="https://github.com/user-attachments/assets/d4c7078b-eb99-4b50-bb17-be37e87af491" />
 
 - ログイン機能
 - ログアウト機能
-- 新規登録時のメール認証（※テスト用のメールサーバは、Mailtrapを使用しています）
-📩メール認証画面
+- 新規登録時のメール認証
+  （※テスト用のメールサーバは、Mailtrapを使用しています）
+
+**🌟📩メール認証画面🌟**
+<img width="2279" height="1247" alt="Image" src="https://github.com/user-attachments/assets/f5ec2e7e-ef0a-46c8-a0ec-c2deb6226d25" />
 
 
 - 商品データを一覧で表示できる
@@ -18,7 +21,7 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 
 ## 学習目的
 
-- Laravel と Next.js を組み合わせた
+- Laravel と Next.js を組み合わせたアプリを学ぶ
 - SPA 認証（Sanctum + Cookie）の仕組みを理解する
 - NextAuth.js を App Router 環境で使う方法を学ぶ
 - 実務に近い構成での Web アプリ開発を体験する

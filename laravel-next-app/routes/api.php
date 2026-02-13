@@ -18,6 +18,8 @@ Route::post('/purchase', [PurchaseController::class, 'store']);
 // 認証不要
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 
 // 認証必要
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
