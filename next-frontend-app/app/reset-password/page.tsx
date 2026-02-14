@@ -67,12 +67,12 @@ export default function ResetPasswordPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center">新しいパスワード設定</h1>
-        <p className="text-sm text-gray-600 break-all">{email || "メール情報なし"}</p>
+        <h1 className="text-3xl font-bold text-center">新しいパスワード設定</h1>
+        <p className="text-2xl text-gray-600 break-all">{email || "メール情報なし"}</p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-xl font-medium text-gray-700">
               新しいパスワード
             </label>
             <input
@@ -86,7 +86,7 @@ export default function ResetPasswordPage() {
           </div>
 
           <div>
-            <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password_confirmation" className="block text-xl font-medium text-gray-700">
               新しいパスワード（確認）
             </label>
             <input
@@ -99,8 +99,8 @@ export default function ResetPasswordPage() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {success && <p className="text-sm text-green-600">{success}</p>}
+          {error && <p className="text-xl text-red-600">{error}</p>}
+          {success && <p className="text-xl text-green-600">{success}</p>}
 
           <button
             type="submit"

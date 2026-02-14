@@ -40,14 +40,14 @@ export default function ForgotPasswordPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center">パスワード再設定</h1>
-        <p className="text-sm text-gray-600">
+        <h1 className="text-3xl font-bold text-center">パスワード再設定</h1>
+        <p className="text-2xl text-gray-600">
           登録済みメールアドレスを入力してください。再設定リンクを送信します。
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-xl font-medium text-gray-700">
               メールアドレス
             </label>
             <input
@@ -60,8 +60,8 @@ export default function ForgotPasswordPage() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {success && <p className="text-sm text-green-600">{success}</p>}
+          {error && <p className="text-xl text-red-600">{error}</p>}
+          {success && <p className="text-xl text-green-600">{success}</p>}
 
           <button
             type="submit"
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
         </form>
 
         <div className="text-center">
-          <Link href="/login" className="text-sm text-indigo-600 hover:underline">
+          <Link href="/login" className="text-xl text-indigo-600 hover:underline">
             ログインに戻る
           </Link>
         </div>

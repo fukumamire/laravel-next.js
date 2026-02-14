@@ -15,14 +15,27 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 **🌟📩メール認証画面🌟**
 <img width="2279" height="1247" alt="Image" src="https://github.com/user-attachments/assets/f5ec2e7e-ef0a-46c8-a0ec-c2deb6226d25" />
 
+- パスワードリセット設定
+**🌟パスワード再設定申請画面🌟**
+<img width="2782" height="1388" alt="Image" src="https://github.com/user-attachments/assets/700abf1a-128d-4a84-8c48-35e1ee5bea5f" />
+
+**🌟パスワード再設定のメール✉🌟**
+<img width="1959" height="1353" alt="Image" src="https://github.com/user-attachments/assets/6d26b446-2dd5-41d6-a5ac-7eff893948a9" />
+
+**🌟新パスワード設定画面🌟**
+<img width="2731" height="1332" alt="Image" src="https://github.com/user-attachments/assets/d9392e22-853b-4015-9ed7-d38de1c73455" />
+
+
 
 - 商品データを一覧で表示できる
 - ログインしているかどうかで、表示されるボタンやメッセージが変わる
 
+
+
 ## 学習目的
 
 - Laravel と Next.js を組み合わせたアプリを学ぶ
-- SPA 認証（Sanctum + Cookie）の仕組みを理解する
+- SPA 認証の仕組みを理解する
 - NextAuth.js を App Router 環境で使う方法を学ぶ
 - 実務に近い構成での Web アプリ開発を体験する
 
@@ -152,5 +165,7 @@ NEXTAUTH_URL=http://localhost:3000
 # 🔑 テストユーザー作成
 
 名前：Test User
+
 email：test@example.com
+
 パスワード：1111
