@@ -5,9 +5,13 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 ## 機能
 
 - 新規登録
+
   <img width="2854" height="1434" alt="Image" src="https://github.com/user-attachments/assets/d4c7078b-eb99-4b50-bb17-be37e87af491" />
 
 - ログイン機能
+
+<img width="2844" height="1420" alt="Image" src="https://github.com/user-attachments/assets/f65b1774-e370-49f5-9af4-31638ef7b09a" />
+
 - ログアウト機能
 - 新規登録時のメール認証
   （※テスト用のメールサーバは、Mailtrapを使用しています）
@@ -16,8 +20,8 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 <img width="2279" height="1247" alt="Image" src="https://github.com/user-attachments/assets/f5ec2e7e-ef0a-46c8-a0ec-c2deb6226d25" />
 
 - パスワードリセット設定
-**🌟パスワード再設定申請画面🌟**
-<img width="2782" height="1388" alt="Image" src="https://github.com/user-attachments/assets/700abf1a-128d-4a84-8c48-35e1ee5bea5f" />
+  **🌟パスワード再設定申請画面🌟**
+  <img width="2782" height="1388" alt="Image" src="https://github.com/user-attachments/assets/700abf1a-128d-4a84-8c48-35e1ee5bea5f" />
 
 **🌟パスワード再設定のメール✉🌟**
 <img width="1959" height="1353" alt="Image" src="https://github.com/user-attachments/assets/6d26b446-2dd5-41d6-a5ac-7eff893948a9" />
@@ -25,12 +29,8 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 **🌟新パスワード設定画面🌟**
 <img width="2731" height="1332" alt="Image" src="https://github.com/user-attachments/assets/d9392e22-853b-4015-9ed7-d38de1c73455" />
 
-
-
 - 商品データを一覧で表示できる
 - ログインしているかどうかで、表示されるボタンやメッセージが変わる
-
-
 
 ## 学習目的
 

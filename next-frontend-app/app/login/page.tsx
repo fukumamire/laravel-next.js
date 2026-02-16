@@ -94,7 +94,7 @@ export default function LoginPage() {
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-2 font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 font-medium text-white text-xl bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               ログイン
             </button>
@@ -108,15 +108,27 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => signIn("google", { callbackUrl: "/" })}
-              className="w-full px-4 py-2 font-medium text-white bg-red-500 rounded-md hover:bg-red-600"
+              className="w-full px-4 py-2 font-medium text-xl text-white bg-red-500 rounded-md hover:bg-red-600 flex items-center justify-center gap-2"
             >
+              <img
+                src="https://cdn.simpleicons.org/google/white"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4"
+              />
               Googleでログイン
             </button>
             <button
               type="button"
               onClick={() => signIn("github", { callbackUrl: "/" })}
-              className="w-full px-4 py-2 font-medium text-white bg-gray-800 rounded-md hover:bg-black"
+              className="w-full px-4 py-2 font-medium text-xl text-white bg-gray-800 rounded-md hover:bg-black flex items-center justify-center gap-2"
             >
+              <img
+                src="https://cdn.simpleicons.org/github/white"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4"
+              />
               GitHubでログイン
             </button>
           </div>
