@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -23,14 +22,16 @@ class AuthController extends Controller
     $user = User::where('email', $request->email)->first();
 
     if (! $user || ! Hash::check($request->password, $user->password)) {
-      throw ValidationException::withMessages([
-        'email' => ['認証情報が正しくありません。'],
-      ]);
+      return response()->json([
+        'code' => 'invalid_credentials',
+        'message' => 'メールアドレスまたはパスワードが正しくありません。',
+      ], 401);
     }
     if (! $user->hasVerifiedEmail()) {
-      throw ValidationException::withMessages([
-        'email' => ['メールアドレスの確認が完了していません。'],
-      ]);
+      return response()->json([
+        'code' => 'email_not_verified',
+        'message' => 'メール認証が完了していません。確認メールをご確認ください。',
+      ], 403);
     }
     // パスワードが合っていたら「合言葉（トークン）」を発行する
     $token = $user->createToken('auth-token')->plainTextToken;
@@ -55,6 +56,15 @@ class AuthController extends Controller
       'name' => 'required|string|max:255',
       'email' => 'required|email|unique:users', // 他の人と被ってないか？
       'password' => 'required|min:8|confirmed', // 8文字以上か？確認用と一致してるか？
+    ], [
+      'name.required' => '名前を入力してください。',
+      'name.max' => '名前は255文字以内で入力してください。',
+      'email.required' => 'メールアドレスを入力してください。',
+      'email.email' => 'メールアドレスの形式が正しくありません。',
+      'email.unique' => 'このメールアドレスは既に登録されています。',
+      'password.required' => 'パスワードを入力してください。',
+      'password.min' => 'パスワードは8文字以上で入力してください。',
+      'password.confirmed' => '確認用パスワードが一致しません。',
     ]);
 
     $user = User::create([

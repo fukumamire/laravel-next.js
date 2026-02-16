@@ -18,8 +18,10 @@ async function authorize(credentials: any) {
   });
 
   if (!loginRes.ok) {
-    console.error("Laravel login failed", loginRes.status);
-    return null;
+    const data = await loginRes.json().catch(() => null);
+    const code = data?.code ?? "login_failed";
+    console.error("Laravel login failed", loginRes.status, code);
+    throw new Error(code);
   }
 
   // ② user + token を返す

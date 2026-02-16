@@ -33,7 +33,21 @@ export default function LoginPage() {
     });
     // ログイン失敗時
     if (result?.error) {
-      setError("メールアドレスまたはパスワードが正しくありません。");
+      switch (result.error) {
+        case "invalid_credentials":
+        case "CredentialsSignin":
+          setError("メールアドレスまたはパスワードが正しくありません。");
+          break;
+        case "email_not_verified":
+          setError("メール認証が完了していません。確認メールをご確認ください。");
+          break;
+        case "login_failed":
+          setError("ログインに失敗しました。時間をおいて再試行してください。");
+          break;
+        default:
+          setError("ログインに失敗しました。");
+          break;
+      }
       return;
     }
 

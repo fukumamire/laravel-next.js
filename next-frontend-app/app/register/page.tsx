@@ -39,9 +39,14 @@ export default function RegisterPage() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => null);
-        const message =
-          data?.message ||
+        const fieldMessage =
+          data?.errors?.name?.[0] ||
           data?.errors?.email?.[0] ||
+          data?.errors?.password?.[0] ||
+          data?.errors?.password_confirmation?.[0];
+        const message =
+          fieldMessage ||
+          data?.message ||
           "登録に失敗しました。";
         setError(message);
         return;
@@ -50,7 +55,7 @@ export default function RegisterPage() {
       setSuccess(data?.message || "確認メールを送信しました。メールを確認してください。");
     } catch (err) {
       console.error(err);
-      setError("登録に失敗しました。");
+      setError("登録に失敗しました。ネットワーク接続をご確認ください。");
     } finally {
       setLoading(false);
     }
