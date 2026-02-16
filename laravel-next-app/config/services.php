@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'oauth_sync' => [
+        'secret' => env('OAUTH_SYNC_SECRET'),
+    ],
+
 ];

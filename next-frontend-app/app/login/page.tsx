@@ -104,6 +104,22 @@ export default function LoginPage() {
               パスワードをお忘れですか？
             </Link>
           </div>
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl: "/" })}
+              className="w-full px-4 py-2 font-medium text-white bg-red-500 rounded-md hover:bg-red-600"
+            >
+              Googleでログイン
+            </button>
+            <button
+              type="button"
+              onClick={() => signIn("github", { callbackUrl: "/" })}
+              className="w-full px-4 py-2 font-medium text-white bg-gray-800 rounded-md hover:bg-black"
+            >
+              GitHubでログイン
+            </button>
+          </div>
         </form>
       </div>
     </div>

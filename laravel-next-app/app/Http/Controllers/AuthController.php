@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -104,5 +105,61 @@ class AuthController extends Controller
     return $status === Password::PASSWORD_RESET
       ? response()->json(['message' => __($status)])
       : response()->json(['message' => __($status)], 422);
+  }
+
+  // OAuthログイン後のユーザー同期
+  public function oauthSync(Request $request)
+  {
+    $internalSecret = (string) config('services.oauth_sync.secret');
+    $requestSecret = (string) $request->header('X-Internal-Auth', '');
+
+    if ($internalSecret === '' || ! hash_equals($internalSecret, $requestSecret)) {
+      return response()->json(['message' => 'Unauthorized'], 403);
+    }
+
+    $data = $request->validate([
+      'provider' => 'required|in:google,github',
+      'provider_id' => 'required|string|max:255',
+      'name' => 'nullable|string|max:255',
+      'email' => 'required|email|max:255',
+      'avatar' => 'nullable|string|max:2048',
+    ]);
+
+    $user = User::where('provider', $data['provider'])
+      ->where('provider_id', $data['provider_id'])
+      ->first();
+
+    if (! $user) {
+      $user = User::where('email', $data['email'])->first();
+    }
+
+    if ($user) {
+      $user->name = $data['name'] ?? $user->name;
+      $user->email = $data['email'];
+      $user->provider = $data['provider'];
+      $user->provider_id = $data['provider_id'];
+      $user->avatar = $data['avatar'] ?? $user->avatar;
+      if (! $user->email_verified_at) {
+        $user->email_verified_at = Carbon::now();
+      }
+      $user->save();
+    } else {
+      $user = User::create([
+        'name' => $data['name'] ?? 'OAuth User',
+        'email' => $data['email'],
+        'password' => Hash::make(Str::random(40)),
+        'provider' => $data['provider'],
+        'provider_id' => $data['provider_id'],
+        'avatar' => $data['avatar'] ?? null,
+        'email_verified_at' => Carbon::now(),
+      ]);
+    }
+
+    $token = $user->createToken('oauth-' . $data['provider'])->plainTextToken;
+
+    return response()->json([
+      'user' => $user,
+      'token' => $token,
+    ]);
   }
 }
