@@ -22,36 +22,6 @@ async function getProducts(): Promise<Product[]> {
 }
 
 
-//  商品カードコンポーネント
-function ProductCard({ product }: { product: Product }) {
-  return (
-    <div
-      className="
-        bg-white rounded-2xl p-6
-        shadow-sm hover:shadow-xl
-        transition-all duration-300
-        hover:-translate-y-1
-        border border-gray-100
-      "
-    >
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">
-        {product.name}
-      </h2>
-
-      <p className="text-gray-500 text-sm mb-6 line-clamp-3">
-        {product.description}
-      </p>
-
-      <div className="flex items-end justify-between">
-        <span className="text-sm text-gray-400">税込</span>
-        <span className="text-2xl font-bold text-indigo-600">
-          ¥{product.price.toLocaleString()}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 // 👇 Client Component を呼ぶだけ！
 import ProductsClient from "./products-client"
 

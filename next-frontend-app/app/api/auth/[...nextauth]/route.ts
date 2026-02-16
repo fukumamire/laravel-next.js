@@ -10,7 +10,10 @@ async function authorize(credentials: any) {
   // ① トークン方式ログイン
   const loginRes = await fetch(`${baseUrl}/api/login`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
     body: JSON.stringify({
       email: credentials?.email,
       password: credentials?.password,

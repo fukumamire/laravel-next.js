@@ -31,6 +31,12 @@ Laravel（バックエンド）と Next.js（フロントエンド）を組み�
 <img width="2731" height="1332" alt="Image" src="https://github.com/user-attachments/assets/d9392e22-853b-4015-9ed7-d38de1c73455" />
 
 - 商品データを一覧で表示できる
+
+<img width="2814" height="1422" alt="Image" src="https://github.com/user-attachments/assets/7f2317e8-91d7-48f6-8f08-2f538eae5a6d" />
+
+
+<img width="2569" height="1378" alt="Image" src="https://github.com/user-attachments/assets/a9fbe2e2-bd77-46f8-878a-694a73ec482b" />
+
 - ログインしているかどうかで、表示されるボタンやメッセージが変わる
 
 ## 学習目的

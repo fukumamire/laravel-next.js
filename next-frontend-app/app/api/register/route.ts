@@ -12,10 +12,21 @@ export async function POST(req: Request) {
     const body = await req.text();
     const upstream = await fetch(`${baseUrl}/api/register`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body,
       cache: "no-store",
+      redirect: "manual",
     });
+
+    if (upstream.status >= 300 && upstream.status < 400) {
+      return Response.json(
+        { message: "登録処理で不正なリダイレクトが発生しました。" },
+        { status: 502 },
+      );
+    }
 
     const text = await upstream.text();
     return new Response(text, {

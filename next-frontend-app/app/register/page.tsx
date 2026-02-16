@@ -37,7 +37,7 @@ export default function RegisterPage() {
         }),
       });
 
-      if (!res.ok) {
+      if (!res.ok || res.status !== 201) {
         const data = await res.json().catch(() => null);
         const fieldMessage =
           data?.errors?.name?.[0] ||
