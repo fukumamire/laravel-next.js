@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Laravel（バックエンド）と Next.js（フロントエンド）を組み合わせた、モダンな Web アプリケーションを開発を学習のために作成しました。",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
